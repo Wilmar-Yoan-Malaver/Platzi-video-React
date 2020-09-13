@@ -38,6 +38,26 @@ module.exports = {
           'sass-loader',
         ],
       },
+      {
+        test: /\.(png|gif|jpg|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[hash].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        issuer: /\.js$/,
+        use: [
+          {
+            loader: 'svg-react-loader',
+          },
+        ],
+      },
     ],
   },
   plugins: [
