@@ -8,7 +8,7 @@ import plusIcon from '../assets/static/icons8-mas.svg';
 import removeIcon from '../assets/static/remove-icon.png';
 
 const CarouselItem = (props) => {
-  const { id, cover, title, year, contentRating, duration } = props;
+  const { id, cover, title, year, contentRating, duration, isList } = props;
   const handleSetFavorite = () => {
     props.setFavorite({
       id,
@@ -31,18 +31,22 @@ const CarouselItem = (props) => {
             className='carousel-item__details--img'
             src='https://img.icons8.com/flat_round/64/000000/play--v1.png'
           />
-          <img
-            className='carousel-item__details--img'
-            src={plusIcon}
-            alt='icon +'
-            onClick={handleSetFavorite}
-          />
-          <img
-            className='carousel-item__details--img'
-            src={removeIcon}
-            alt='remove icon'
-            onClick={() => handleDeleteFavorite(id)}
-          />
+
+          {isList ? (
+            <img
+              className='carousel-item__details--img'
+              src={removeIcon}
+              alt='remove icon'
+              onClick={() => handleDeleteFavorite(id)}
+            />
+          ) : (
+            <img
+              className='carousel-item__details--img'
+              src={plusIcon}
+              alt='icon +'
+              onClick={handleSetFavorite}
+            />
+          )}
         </div>
         <p className='carousel-item__details--title'>{title}</p>
         <p className='carousel-item__details--subtitle'>
