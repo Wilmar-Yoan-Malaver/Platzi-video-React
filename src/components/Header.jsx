@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import gravatar from '../utils/gravatar';
 import { logoutRequets } from '../actions';
+import PropTypes from 'prop-types';
 import '../assets/styles/components/Header.scss';
 
 import logo from '../assets/static/logo-platzi.png';
@@ -53,6 +54,10 @@ const Header = (props) => {
   );
 };
 
+Header.propTypes = {
+  user: PropTypes.object,
+  logoutRequest: PropTypes.func,
+};
 const mapStateToProps = (state) => {
   return {
     user: state.user,
