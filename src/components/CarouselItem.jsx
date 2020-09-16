@@ -6,9 +6,18 @@ import '../assets/styles/components/CarouselItem.scss';
 // import playIcon from '../assets/static/logo-platzi.png';
 import plusIcon from '../assets/static/icons8-mas.svg';
 import removeIcon from '../assets/static/remove-icon.png';
+import { Link } from 'react-router-dom';
 
 const CarouselItem = (props) => {
-  const { id, cover, title, year, contentRating, duration, isList } = props;
+  const {
+    id,
+    cover,
+    title,
+    year,
+    contentRating,
+    duration,
+    isList,
+  } = props;
   const handleSetFavorite = () => {
     props.setFavorite({
       id,
@@ -24,13 +33,20 @@ const CarouselItem = (props) => {
   };
   return (
     <div className='carousel-item'>
-      <img className='carousel-item__img' src={cover} alt={title} />
+      <img
+        className='carousel-item__img'
+        src={cover}
+        alt={title}
+      />
       <div className='carousel-item__details'>
         <div>
-          <img
-            className='carousel-item__details--img'
-            src='https://img.icons8.com/flat_round/64/000000/play--v1.png'
-          />
+          <Link to={`/player/${id}`}>
+            <img
+              className='carousel-item__details--img'
+              src='https://img.icons8.com/flat_round/64/000000/play--v1.png'
+              alt='Play Icon'
+            />
+          </Link>
 
           {isList ? (
             <img
