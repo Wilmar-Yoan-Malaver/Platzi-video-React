@@ -27,6 +27,11 @@ const reducer = (state, action) => {
         ...state,
         user: action.payload,
       };
+    case actions.logoutRequets:
+      return {
+        ...state,
+        user: action.payload,
+      };
     default:
       return state;
   }
